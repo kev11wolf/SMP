@@ -15,7 +15,7 @@
         
         header {
             background-color: #004c00;
-           /*  background-image: url('https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg'); /* Add your header background image URL */
+        /*    background-image: url('https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg'); /* Add your header background image URL */
             background-size: cover;
             background-position: center;
             opacity: 1; /* Opacity to show the image */
@@ -114,6 +114,28 @@
             vertical-align: middle;
             margin-right: 10px;
         }
+
+        .youtube {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: #004c00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feedback-button {
+            background-color: #fff;
+            color: #004c00;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +151,7 @@
 
     <main>
         <!-- Slideshow Section -->
- <!--
+        <!--
         <section class="slideshow">
             <h2>Slideshow</h2>
             <img id="slideshow-image" src="https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg" alt="Slide 1">
@@ -156,7 +178,19 @@
                 <!-- Pool participant scores will be inserted here -->
             </ul>
         </section>
+
+        <!-- YouTube Video Section -->
+        <section class="youtube">
+            <h2>Featured Video</h2>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </section>
     </main>
+
+    <footer>
+        <p>Website Footer Jargon</p>
+        <button class="feedback-button" onclick="sendFeedback()">Submit Feedback</button>
+    </footer>
+
     <script>
         // Countdown Timer
         function updateCountdown() {
@@ -188,6 +222,13 @@
         }
 
         setInterval(cycleSlideshow, 3000);
+
+        function sendFeedback() {
+            const feedback = prompt("Please enter your feedback:");
+            if (feedback) {
+                window.location.href = `mailto:kev11wolf@gmail.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`;
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             // Example data, replace with your raw copy-paste dataset values
