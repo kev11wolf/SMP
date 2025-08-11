@@ -15,9 +15,29 @@
         
         header {
             background-color: #004c00;
+            background-image: url('https://www.example.com/header-image.jpg'); /* Add your header background image URL */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1; /* Opacity to show the image */
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 1;
+        }
+
+        .timer {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         main {
@@ -53,6 +73,29 @@
         li:hover {
             background-color: #e5ffe5;
         }
+
+        .slideshow {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .slideshow img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .updates {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
         
         .expand {
             display: none;
@@ -65,21 +108,11 @@
         .golf-icon {
             width: 20px;
             height: 20px;
-            background-image: url('golf-icon.png');
+            background-image: url('https://i.etsystatic.com/16454555/r/il/f205d2/4762277869/il_570xN.4762277869_89g1.jpg');
             background-size: contain;
             display: inline-block;
             vertical-align: middle;
             margin-right: 10px;
-        }
-
-        .slideshow,
-        .updates {
-            margin-bottom: 40px;
-        }
-
-        .slideshow img {
-            width: 100%;
-            border-radius: 5px;
         }
     </style>
 </head>
@@ -87,12 +120,18 @@
     <header>
         <h1>Masters Pool Leaderboard</h1>
     </header>
+
+    <!-- Countdown Timer Section -->
+    <section class="timer" id="countdown-timer">
+        <h2>Countdown to April 9, 2026</h2>
+        <p id="time-left"></p>
+    </section>
+
     <main>
         <!-- Slideshow Section -->
         <section class="slideshow">
             <h2>Slideshow</h2>
-            <img src="slide1.jpg" alt="Slide 1">
-            <!-- Add more slides as needed -->
+            <img id="slideshow-image" src="https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg" alt="Slide 1">
         </section>
         
         <!-- Updates Section -->
@@ -105,10 +144,7 @@
         <section id="golf-leaderboard">
             <h2>Golf Players Leaderboard</h2>
             <ul id="golf-list">
-                <!-- Paste/update golf player scores here -->
-                <li><span class="golf-icon"></span> Player 1: -10</li>
-                <li><span class="golf-icon"></span> Player 2: -8</li>
-                <!-- Add more players easily -->
+                <!-- Golf player scores will be inserted here -->
             </ul>
         </section>
         
@@ -116,34 +152,112 @@
         <section id="pool-leaderboard">
             <h2>Pool Participants Leaderboard</h2>
             <ul id="pool-list">
-                <!-- Paste/update participant scores here with their selected players -->
-                <li><span class="golf-icon"></span> Participant 1: 300
-                    <div class="expand">
-                        <div>Golf Player 1: -4</div>
-                        <div>Golf Player 2: -3</div>
-                    </div>
-                </li>
-                <li><span class="golf-icon"></span> Participant 2: 280
-                    <div class="expand">
-                        <div>Golf Player 1: -5</div>
-                        <div>Golf Player 3: 0</div>
-                    </div>
-                </li>
-                <!-- Add more participants easily -->
+                <!-- Pool participant scores will be inserted here -->
             </ul>
         </section>
     </main>
     <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const futureDate = new Date("09 April 2026").getTime();
+            const now = new Date().getTime();
+            const timeLeft = futureDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("time-left").textContent =
+                `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Slideshow
+        const images = ['https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg',
+                        'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg',
+                        'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg']; // Add more image URLs as needed
+        let currentImageIndex = 0;
+        const slideshowImage = document.getElementById('slideshow-image');
+
+        function cycleSlideshow() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            slideshowImage.src = images[currentImageIndex];
+        }
+
+        setInterval(cycleSlideshow, 3000);
+
         document.addEventListener('DOMContentLoaded', function () {
-            const listItems = document.querySelectorAll('#pool-list li');
+            // Example data, replace with your raw copy-paste dataset values
+            const golfLeaderboardData = [
+                { name: 'Player 1', score: -10 },
+                { name: 'Player 2', score: -8 },
+                { name: 'Player 5', score: -15 },
+                { name: 'Player 3', score: -12 }
+                // Add more players as needed
+            ];
+
+            const poolLeaderboardData = [
+                {
+                    name: 'Participant 1',
+                    points: 300,
+                    selectedPlayers: [
+                        { name: 'Golf Player 1', score: -4 },
+                        { name: 'Golf Player 2', score: -3 }
+                        // Add more players as needed
+                    ],
+                },
+                {
+                    name: 'Participant 2',
+                    points: 280,
+                    selectedPlayers: [
+                        { name: 'Golf Player 1', score: -5 },
+                        { name: 'Golf Player 3', score: 0 }
+                        // Add more players as needed
+                    ],
+                }
+                // Add more participants as needed
+            ];
+
+            // Sort the golf players by score (smallest to largest)
+            golfLeaderboardData.sort((a, b) => a.score - b.score);
             
-            listItems.forEach(item => {
-                item.addEventListener('click', function () {
-                    const expanded = item.querySelector('.expand').style.display === 'block';
-                    document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
-                    item.querySelector('.expand').style.display = expanded ? 'none' : 'block';
+            // Sort the pool participants by points (smallest to largest)
+            poolLeaderboardData.sort((a, b) => a.points - b.points);
+
+            function updateLeaderboard(listId, data, scoreType) {
+                const list = document.getElementById(listId);
+                list.innerHTML = ''; // Clear list
+
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    const expandDiv = document.createElement('div');
+                    expandDiv.classList.add('expand');
+
+                    li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`;
+                    list.appendChild(li);
+
+                    if (item.selectedPlayers) {
+                        item.selectedPlayers.forEach(player => {
+                            const playerInfo = document.createElement('div');
+                            playerInfo.textContent = `${player.name}: ${player.score}`;
+                            expandDiv.appendChild(playerInfo);
+                        });
+                    }
+
+                    li.appendChild(expandDiv);
+
+                    li.addEventListener('click', function () {
+                        const expanded = expandDiv.style.display === 'block';
+                        document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
+                        expandDiv.style.display = expanded ? 'none' : 'block';
+                    });
                 });
-            });
+            }
+
+            updateLeaderboard('golf-list', golfLeaderboardData, 'score');
+            updateLeaderboard('pool-list', poolLeaderboardData, 'points');
         });
     </script>
 </body>
