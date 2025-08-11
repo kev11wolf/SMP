@@ -5,25 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Masters Pool Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f5ef;
+        }
+        
+        header {
+            background-color: #004c00;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #003300;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        li {
+            background-color: #fff;
+            margin: 5px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        
+        li:hover {
+            background-color: #e5ffe5;
+        }
+        
+        .expand {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e5ffe5;
+            border-radius: 5px;
+        }
+        
+        .golf-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('golf-icon.png');
+            background-size: contain;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .slideshow,
+        .updates {
+            margin-bottom: 40px;
+        }
+
+        .slideshow img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Masters Pool Leaderboard</h1>
     </header>
     <main>
+        <!-- Slideshow Section -->
+        <section class="slideshow">
+            <h2>Slideshow</h2>
+            <img src="slide1.jpg" alt="Slide 1">
+            <!-- Add more slides as needed -->
+        </section>
+        
+        <!-- Updates Section -->
+        <section class="updates">
+            <h2>General Updates & Current Status</h2>
+            <p>Here you can add text updates and current status information.</p>
+        </section>
+
+        <!-- Golf Leaderboard -->
         <section id="golf-leaderboard">
             <h2>Golf Players Leaderboard</h2>
             <ul id="golf-list">
-                <!-- Dynamically insert golf players here -->
+                <!-- Paste/update golf player scores here -->
+                <li><span class="golf-icon"></span> Player 1: -10</li>
+                <li><span class="golf-icon"></span> Player 2: -8</li>
+                <!-- Add more players easily -->
             </ul>
         </section>
+        
+        <!-- Pool Participants Leaderboard -->
         <section id="pool-leaderboard">
             <h2>Pool Participants Leaderboard</h2>
             <ul id="pool-list">
-                <!-- Dynamically insert pool participants here -->
+                <!-- Paste/update participant scores here with their selected players -->
+                <li><span class="golf-icon"></span> Participant 1: 300
+                    <div class="expand">
+                        <div>Golf Player 1: -4</div>
+                        <div>Golf Player 2: -3</div>
+                    </div>
+                </li>
+                <li><span class="golf-icon"></span> Participant 2: 280
+                    <div class="expand">
+                        <div>Golf Player 1: -5</div>
+                        <div>Golf Player 3: 0</div>
+                    </div>
+                </li>
+                <!-- Add more participants easily -->
             </ul>
         </section>
     </main>
-    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const listItems = document.querySelectorAll('#pool-list li');
+            
+            listItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    const expanded = item.querySelector('.expand').style.display === 'block';
+                    document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
+                    item.querySelector('.expand').style.display = expanded ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
