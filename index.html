@@ -12,13 +12,11 @@
             padding: 0;
             background-color: #f7f5ef;
         }
-        
+
         header {
             background-color: #004c00;
-        /*    background-image: url('https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg'); /* Add your header background image URL */
             background-size: cover;
             background-position: center;
-            opacity: 1; /* Opacity to show the image */
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -30,7 +28,11 @@
             z-index: 1;
         }
 
-        .timer {
+        .timer,
+        .updates,
+        #golf-leaderboard,
+        #pool-leaderboard,
+        .youtube {
             background-color: #fff;
             padding: 10px;
             text-align: center;
@@ -43,6 +45,7 @@
         main {
             padding: 20px;
             max-width: 800px;
+            text-align: center;
             margin: 0 auto;
         }
         
@@ -52,6 +55,7 @@
         
         h2 {
             color: #003300;
+            text-align: center;
         }
         
         ul {
@@ -74,29 +78,6 @@
             background-color: #e5ffe5;
         }
 
-        .slideshow {
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .slideshow img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .updates {
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
         .expand {
             display: none;
             margin-top: 10px;
@@ -113,11 +94,6 @@
             display: inline-block;
             vertical-align: middle;
             margin-right: 10px;
-        }
-
-        .youtube {
-            text-align: center;
-            margin: 20px 0;
         }
 
         footer {
@@ -143,27 +119,17 @@
         <h1>Masters Pool Leaderboard</h1>
     </header>
 
-    <!-- Countdown Timer Section -->
     <section class="timer" id="countdown-timer">
         <h2>Countdown to April 9, 2026</h2>
         <p id="time-left"></p>
     </section>
 
     <main>
-        <!-- Slideshow Section -->
-        <!--
-        <section class="slideshow">
-            <h2>Slideshow</h2>
-            <img id="slideshow-image" src="https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg" alt="Slide 1">
-        </section>
-        
-        <!-- Updates Section -->
         <section class="updates">
             <h2>News + Updates</h2>
             <p>Thanks for playing! See you all in 2026.</p>
         </section>
 
-        <!-- Golf Leaderboard -->
         <section id="golf-leaderboard">
             <h2>Golf Players Leaderboard</h2>
             <ul id="golf-list">
@@ -171,7 +137,6 @@
             </ul>
         </section>
         
-        <!-- Pool Participants Leaderboard -->
         <section id="pool-leaderboard">
             <h2>Pool Participants Leaderboard</h2>
             <ul id="pool-list">
@@ -179,7 +144,6 @@
             </ul>
         </section>
 
-        <!-- YouTube Video Section -->
         <section class="youtube">
             <h2>Featured Video</h2>
             <iframe width="400" height="225" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -192,7 +156,6 @@
     </footer>
 
     <script>
-        // Countdown Timer
         function updateCountdown() {
             const futureDate = new Date("09 April 2026").getTime();
             const now = new Date().getTime();
@@ -209,20 +172,6 @@
 
         setInterval(updateCountdown, 1000);
 
-        // Slideshow
-        const images = ['https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg',
-                        'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg',
-                        'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg']; // Add more image URLs as needed
-        let currentImageIndex = 0;
-        const slideshowImage = document.getElementById('slideshow-image');
-
-        function cycleSlideshow() {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            slideshowImage.src = images[currentImageIndex];
-        }
-
-        setInterval(cycleSlideshow, 3000);
-
         function sendFeedback() {
             const feedback = prompt("Please enter your feedback:");
             if (feedback) {
@@ -230,20 +179,18 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // Example data, replace with your raw copy-paste dataset values
+        document.addEventListener('DOMContentLoaded', function() {
             const golfLeaderboardData = [
-                { name: 'Player 1', score: -10 },
-                { name: 'Player 2', score: -8 },
-                { name: 'Player 5', score: -15 },
-                { name: 'Player 3', score: -12 }
+                { name: 'Player 1', score: -10, roundScores: [-1, -1, -1, -1] },
+                { name: 'Player 2', score: -8, roundScores: [-2, -2, -2, -2] },
+                { name: 'Player 5', score: -15, roundScores: [-3, -3, -3, -3] },
+                { name: 'Player 3', score: -12, roundScores: [-4, -4, -4, -4] }
                 // Add more players as needed
             ];
 
             const poolLeaderboardData = [
                 {
-                    name: 'Participant 1',
-                    points: 300,
+                    name: 'Participant 1', points: 300, 
                     selectedPlayers: [
                         { name: 'Golf Player 1', score: -4 },
                         { name: 'Golf Player 2', score: -3 }
@@ -262,10 +209,7 @@
                 // Add more participants as needed
             ];
 
-            // Sort the golf players by score (smallest to largest)
             golfLeaderboardData.sort((a, b) => a.score - b.score);
-            
-            // Sort the pool participants by points (smallest to largest)
             poolLeaderboardData.sort((a, b) => a.points - b.points);
 
             function updateLeaderboard(listId, data, scoreType) {
@@ -280,6 +224,11 @@
                     li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`;
                     list.appendChild(li);
 
+                    if (item.roundScores) {
+                        const roundScores = item.roundScores.map((score, index) => `<div>Round ${index + 1}: ${score}</div>`).join('');
+                        expandDiv.innerHTML = `<strong>Round Scores:</strong>${roundScores}`;
+                    }
+
                     if (item.selectedPlayers) {
                         item.selectedPlayers.forEach(player => {
                             const playerInfo = document.createElement('div');
@@ -290,7 +239,7 @@
 
                     li.appendChild(expandDiv);
 
-                    li.addEventListener('click', function () {
+                    li.addEventListener('click', function() {
                         const expanded = expandDiv.style.display === 'block';
                         document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
                         expandDiv.style.display = expanded ? 'none' : 'block';
