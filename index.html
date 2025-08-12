@@ -32,7 +32,8 @@
         .updates,
         #golf-leaderboard,
         #pool-leaderboard,
-        .youtube {
+        .youtube,
+        .slideshow {
             background-color: #fff;
             padding: 10px;
             text-align: center;
@@ -112,6 +113,15 @@
             cursor: pointer;
             margin-top: 10px;
         }
+
+        .slideshow img {
+            max-width: 100%;
+            width: 500px;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +140,11 @@
             <p>Thanks for playing! See you all in 2026.</p>
         </section>
 
+        <section class="slideshow">
+            <h2>Slideshow</h2>
+            <img id="slideshow-image" src="" alt="Slideshow Image">
+        </section>
+
         <section id="golf-leaderboard">
             <h2>Golf Players Leaderboard</h2>
             <ul id="golf-list">
@@ -146,7 +161,7 @@
 
         <section class="youtube">
             <h2>Featured Video</h2>
-            <iframe width="400" height="225" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/G97AdMLbfr4?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </section>
     </main>
 
@@ -180,33 +195,38 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg',
+                'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg',
+                'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg'
+                // Add more image URLs as needed
+            ];
+            let currentImageIndex = 0;
+            const slideshowImage = document.getElementById('slideshow-image');
+
+            function cycleSlideshow() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                slideshowImage.src = images[currentImageIndex];
+            }
+
+            setInterval(cycleSlideshow, 3000);
+
             const golfLeaderboardData = [
                 { name: 'Player 1', score: -10, roundScores: [-1, -1, -1, -1] },
                 { name: 'Player 2', score: -8, roundScores: [-2, -2, -2, -2] },
                 { name: 'Player 5', score: -15, roundScores: [-3, -3, -3, -3] },
                 { name: 'Player 3', score: -12, roundScores: [-4, -4, -4, -4] }
-                // Add more players as needed
             ];
 
             const poolLeaderboardData = [
-                {
-                    name: 'Participant 1', points: 300, 
-                    selectedPlayers: [
-                        { name: 'Golf Player 1', score: -4 },
-                        { name: 'Golf Player 2', score: -3 }
-                        // Add more players as needed
-                    ],
-                },
-                {
-                    name: 'Participant 2',
-                    points: 280,
-                    selectedPlayers: [
-                        { name: 'Golf Player 1', score: -5 },
-                        { name: 'Golf Player 3', score: 0 }
-                        // Add more players as needed
-                    ],
-                }
-                // Add more participants as needed
+                { name: 'Participant 1', points: 300, selectedPlayers: [
+                    { name: 'Golf Player 1', score: -4 },
+                    { name: 'Golf Player 2', score: -3 }
+                ]},
+                { name: 'Participant 2', points: 280, selectedPlayers: [
+                    { name: 'Golf Player 1', score: -5 },
+                    { name: 'Golf Player 3', score: 0 }
+                ]}
             ];
 
             golfLeaderboardData.sort((a, b) => a.score - b.score);
@@ -214,7 +234,7 @@
 
             function updateLeaderboard(listId, data, scoreType) {
                 const list = document.getElementById(listId);
-                list.innerHTML = ''; // Clear list
+                list.innerHTML = '';
 
                 data.forEach(item => {
                     const li = document.createElement('li');
