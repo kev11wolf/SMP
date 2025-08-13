@@ -130,7 +130,7 @@
     </header>
 
     <section class="timer" id="countdown-timer">
-        <h2>Countdown to April 9, 2026</h2>
+        <h2>Time left 'til 2026 Masters
         <p id="time-left"></p>
     </section>
 
@@ -196,18 +196,35 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const images = [
-                'https://www.clublender.com/wp-content/uploads/2018/03/masters.jpg',
-                'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg',
-                'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg'
+                'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg', //par 3
+                'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg', //par 5
+                'https://static01.nyt.com/images/2025/05/12/multimedia/12nat-masters-photos-rory-win-sunday-chtq/12nat-masters-photos-rory-win-sunday-chtq-articleLarge.jpg', // Rory squatting masters win
+                'https://images2.minutemediacdn.com/image/upload/c_crop,w_8025,h_4514,x_0,y_167/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/si/01jabn4qvj71gpkb0kzy.jpg', //Scottie holding trophy
+                'https://golfweek.usatoday.com/gcdn/authoring/authoring-images/2025/04/10/SGLF/83022855007-usatsi-25892403.jpg', //Honorary starters
+                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1685967.jpg', //Jack Nicklaus Yes Sir Putter Lift
+                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-83123181.jpg', //Phil jumping masters win
+                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1074391880-1.jpg', //1997 tigers win fist pump
+                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1145859172.jpg' //2019 tiger masters win
+            
                 // Add more image URLs as needed
             ];
             let currentImageIndex = 0;
             const slideshowImage = document.getElementById('slideshow-image');
-
+            
+    // Set initial image source
+    slideshowImage.src = images[currentImageIndex];
+            
+          // linear first to last slideshow order
             function cycleSlideshow() {
                 currentImageIndex = (currentImageIndex + 1) % images.length;
                 slideshowImage.src = images[currentImageIndex];
             }
+            
+// random slideshow order
+  //  function cycleSlideshow() {
+  //      const randomIndex = Math.floor(Math.random() * images.length);
+   //     slideshowImage.src = images[randomIndex];
+   // } 
 
             setInterval(cycleSlideshow, 3000);
 
@@ -227,12 +244,11 @@
                     { name: 'Golf Player 1', score: -4 },
                     { name: 'Golf Player 2', score: -3 }
                 ]},
-                { name: 'Participant 2', points: 280, selectedPlayers: [
-                    { name: 'Golf Player 1', score: -5 },
-                    { name: 'Golf Player 3', score: 0 }
-                ]}
-            ];
+{ name: 'K-Dawg', points: -35, selectedPlayers:[{name: 'Justin Rose', score:-11},{name: 'Patrick Reed', score:-9},{name: 'Scottie Scheffler', score:-8},{name: 'Sungjae Im', score:-7},{name: 'Bryson DeChambeau', score:-7},{name: 'Ludvig Åberg', score:-6}]},
 
+
+            
+];
             golfLeaderboardData.sort((a, b) => a.score - b.score);
             poolLeaderboardData.sort((a, b) => a.points - b.points);
 
