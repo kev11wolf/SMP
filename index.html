@@ -122,6 +122,28 @@
             display: block;
             margin: 0 auto;
         }
+        table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+th, td {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    border-radius: 5px;
+}
+
+th {
+    background-color: #003300;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #e5ffe5;
+}
     </style>
 </head>
 <body>
@@ -158,6 +180,28 @@
                 <!-- Pool participant scores will be inserted here -->
             </ul>
         </section>
+        
+        <section id="historical-winners">
+    <h2>Sommerville Masters Pool Past Champions</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Total to Par</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example row -->
+            <tr>
+                <td>Jack Nicklaus</td>
+                <td>1986</td>
+                <td>-9</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</section>
 
         <section class="youtube">
             <h2>Featured Video</h2>
