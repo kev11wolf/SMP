@@ -116,8 +116,8 @@
 
         .slideshow img {
             max-width: 100%;
-            width: 500px;
-            height: auto;
+            width: auto;
+            height: 200px;
             border-radius: 5px;
             display: block;
             margin: 0 auto;
@@ -212,11 +212,15 @@
             setInterval(cycleSlideshow, 3000);
 
             const golfLeaderboardData = [
-                { name: 'Player 1', score: -10, roundScores: [-1, -1, -1, -1] },
-                { name: 'Player 2', score: -8, roundScores: [-2, -2, -2, -2] },
-                { name: 'Player 5', score: -15, roundScores: [-3, -3, -3, -3] },
-                { name: 'Player 3', score: -12, roundScores: [-4, -4, -4, -4] }
-            ];
+{name: 'Rory McIlroy', score:-11, roundScores: [0,-6,-6,1]},
+{name: 'Justin Rose', score:-11, roundScores: [-7,-1,3,-6]},
+{name: 'Patrick Reed', score:-9, roundScores: [-1,-2,-3,-3]},
+{name: 'Scottie Scheffler', score:-8, roundScores: [-4,-1,0,-3]},
+{name: 'Sungjae Im', score:-7, roundScores: [-1,-2,-1,-3]},
+{name: 'Bryson DeChambeau', score:-7, roundScores: [-3,-4,-3,3]}
+
+
+];
 
             const poolLeaderboardData = [
                 { name: 'Participant 1', points: 300, selectedPlayers: [
