@@ -1,358 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Masters Pool Leaderboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f5ef;
-        }
-
-        header {
-            background-color: #004c00;
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        header h1 {
-            position: relative;
-            z-index: 1;
-        }
-
-        .timer,
-        .updates,
-        #golf-leaderboard,
-        #pool-leaderboard,
-        .youtube,
-        .slideshow {
-            background-color: #fff;
-            padding: 10px;
-            text-align: center;
-            max-width: 800px;
-            margin: 20px auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        main {
-            padding: 20px;
-            max-width: 800px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        
-        section {
-            margin-bottom: 40px;
-        }
-        
-        h2 {
-            color: #003300;
-            text-align: center;
-        }
-        
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        li {
-            background-color: #fff;
-            margin: 5px 0;
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            position: relative;
-            transition: background-color 0.3s ease;
-        }
-        
-        li:hover {
-            background-color: #e5ffe5;
-        }
-
-        .expand {
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #e5ffe5;
-            border-radius: 5px;
-        }
-        
-        .golf-icon {
-            width: 20px;
-            height: 20px;
-            background-image: url('https://i.etsystatic.com/16454555/r/il/f205d2/4762277869/il_570xN.4762277869_89g1.jpg');
-            background-size: contain;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 10px;
-        }
-
-        footer {
-            background-color: #004c00;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .feedback-button {
-            background-color: #fff;
-            color: #004c00;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .slideshow img {
-            max-width: 100%;
-            width: auto;
-            height: 200px;
-            border-radius: 5px;
-            display: block;
-            margin: 0 auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-
-        th, td {
-            padding: 10px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            text-align: center;
-            border-radius: 5px;
-        }
-
-        th {
-            background-color: #003300;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #e5ffe5;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Masters Pool Leaderboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f5ef;
+    }
+    header {
+      background-color: #003525;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      position: relative;
+      z-index: 1;
+      margin-left: 60px; /* so text doesn't overlap logo */
+    }
+    .logo {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-height: 50px;
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      z-index: 2;
+    }
+    .timer, .updates, #golf-leaderboard, #pool-leaderboard, .youtube, .slideshow {
+      background-color: #fff;
+      padding: 10px;
+      text-align: center;
+      max-width: 800px;
+      margin: 20px auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .update-image, .summary-image {
+      display: block;
+      margin: 16px auto 0 auto;
+      max-height: 200px;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      color: #003300;
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: #fff;
+      margin: 5px 0;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s ease;
+    }
+    li:hover {
+      background-color: #e5ffe5;
+    }
+    .expand {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #e5ffe5;
+      border-radius: 5px;
+    }
+    .golf-icon {
+      width: 20px;
+      height: 20px;
+      background-image: url('https://i.etsystatic.com/16454555/r/il/f205d2/4762277869/il_570xN.4762277869_89g1.jpg');
+      background-size: contain;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    footer {
+      background-color: #003525;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .feedback-button {
+      background-color: #fff;
+      color: #004c00;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .slideshow img {
+      max-width: 100%;
+      width: auto;
+      height: 200px;
+      border-radius: 5px;
+      display: block;
+      margin: 0 auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      text-align: center;
+      border-radius: 5px;
+    }
+    th {
+      background-color: #003300;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #e5ffe5;
+    }
+    /* Button styling, if you want it to stand out */
+    .collapse-btn {
+      margin: 10px 0 20px 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      background: #e5ffe5;
+      color: #003300;
+      border: 1px solid #003300;
+      padding: 7px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Masters Pool Leaderboard</h1>
-    </header>
-
-    <section class="timer" id="countdown-timer">
-        <h2>Time left 'til 2026 Masters
-        <p id="time-left"></p>
+  <header>
+    <!-- Insert your logo URL and logo link below -->
+    <a href="YOUR_LOGO_LINK_HERE">
+      <img src="https://esagcs.org/wp-content/uploads/2023/03/The-Masters.jpg" alt="Logo" class="logo">
+    </a>
+    <h1>Sommeverille Masters Pool</h1>
+  </header>
+  <section class="timer" id="countdown-timer">
+    <h2>Time left 'til 2026 Masters</h2>
+    <p id="time-left"></p>
+  </section>
+  <main>
+    <section class="updates">
+      <h2>News + Updates</h2>
+      <p>Thanks for playing! See you all in 2026.</p>
+      <!-- Placeholder image for News + Updates (replace src as needed) -->
+      <img src="https://res.cloudinary.com/www-flook-co-za/image/upload/c_fit,f_auto,w_800,q_auto:eco/v1741872908/ffcugz2w4kcq7bj9jbfu.jpg" alt="Update Placeholder" class="update-image">
     </section>
-
-    <main>
-        <section class="updates">
-            <h2>News + Updates</h2>
-            <p>Thanks for playing! See you all in 2026.</p>
-        </section>
-
-        <section class="slideshow">
-            <h2>Slideshow</h2>
-            <img id="slideshow-image" src="" alt="Slideshow Image">
-        </section>
-
-        <section id="golf-leaderboard">
-            <h2>Golf Players Leaderboard</h2>
-            <ul id="golf-list">
-                <!-- Golf player scores will be inserted here -->
-            </ul>
-            <button id="toggle-button">Show More</button>
-        </section>
-        
-        <section id="pool-leaderboard">
-            <h2>Pool Participants Leaderboard</h2>
-            <ul id="pool-list">
-                <!-- Pool participant scores will be inserted here -->
-            </ul>
-        </section>
-        
-        <section id="historical-winners">
-            <h2>Sommerville Masters Pool Past Champions</h2>
-            <table>
-                <thead>
+    <section class="slideshow">
+     <!-- <h2>Slideshow</h2> -->
+      <img id="slideshow-image" src="" alt="Slideshow Image">
+    </section>
+    <section id="golf-leaderboard">
+      <h2>Golf Players Leaderboard</h2>
+      <!-- Collapse/Expand Button directly under header -->
+      <button id="toggle-button" class="collapse-btn">Show More</button>
+      <ul id="golf-list">
+        <!-- Golf player scores will be inserted here -->
+      </ul>
+    </section>
+    <section id="pool-leaderboard">
+      <h2>Pool Participants Leaderboard</h2>
+      <ul id="pool-list">
+        <!-- Pool participant scores will be inserted here -->
+      </ul>
+    </section>
+    <section id="historical-winners">
+      <h2>Sommerville Masters Pool Past Champions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Example row -->
+          <tr>
+            <td>2025</td>
+            <td>Jason</td>
+          </tr>
                     <tr>
-                        <th>Name</th>
-                        <th>Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Example row -->
+            <td>2024</td>
+            <td>Blake</td>
+          </tr>
                     <tr>
-                        <td>2025</td>
-                        <td>Name</td>
-                    </tr>
-                    <!-- Add more rows as needed -->
-                </tbody>
-            </table>
-        </section>
+            <td>2023</td>
+            <td>Brandon E.</td>
+          </tr>
+                    <tr>
+            <td>2022</td>
+            <td>Dima</td>
+          </tr>
+                    <tr>
+            <td>2021</td>
+            <td>Zach K.</td>
+          </tr>
+          <!-- Add more rows as needed -->
+        </tbody>
+      </table>
+    </section>
+    <section class="youtube">
+      <h2>Featured Video</h2>
+      <iframe width="300" height="150" src="https://www.youtube.com/embed/G97AdMLbfr4?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </section>
+  </main>
+  <footer>
+    <p>Website created by K-Dawg. All Rights Reserved. 2025</p>
+    <button class="feedback-button" onclick="sendFeedback()">Submit Feedback</button>
+  </footer>
+  <script>
+    function updateCountdown() {
+      const futureDate = new Date("09 April 2026").getTime();
+      const now = new Date().getTime();
+      const timeLeft = futureDate - now;
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      document.getElementById("time-left").textContent =
+        `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+    }
+    setInterval(updateCountdown, 1000);
+    function sendFeedback() {
+      const feedback = prompt("Please enter your feedback:");
+      if (feedback) {
+        window.location.href = `mailto:kev11wolf@gmail.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`;
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = [
+        'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg', //par 3
+        'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg', //par 5
+        'https://static01.nyt.com/images/2025/05/12/multimedia/12nat-masters-photos-rory-win-sunday-chtq/12nat-masters-photos-rory-win-sunday-chtq-articleLarge.jpg', // Rory squatting masters win
+        'https://images2.minutemediacdn.com/image/upload/c_crop,w_8025,h_4514,x_0,y_167/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/si/01jabn4qvj71gpkb0kzy.jpg', //Scottie holding trophy
+        'https://golfweek.usatoday.com/gcdn/authoring/authoring-images/2025/04/10/SGLF/83022855007-usatsi-25892403.jpg', //Honorary starters
+        'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1685967.jpg', //Jack Nicklaus Yes Sir Putter Lift
+        'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-83123181.jpg', //Phil jumping masters win
+        'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1074391880-1.jpg', //1997 tiger's win fist pump
+        'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1145859172.jpg' //2019 tiger masters win
+      ];
+      let currentImageIndex = 0;
+      const slideshowImage = document.getElementById('slideshow-image');
+      slideshowImage.src = images[currentImageIndex];
+      function cycleSlideshow() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        slideshowImage.src = images[currentImageIndex];
+      }
+      setInterval(cycleSlideshow, 3000);
 
-        <section class="youtube">
-            <h2>Featured Video</h2>
-            <iframe width="300" height="150" src="https://www.youtube.com/embed/G97AdMLbfr4?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </section>
-    </main>
+      const golfLeaderboardData = [
+        {name: 'Rory McIlroy', score:-11, roundScores: [0,-6,-6,1]},
+        {name: 'Justin Rose', score:-11, roundScores: [-7,-1,3,-6]},
+        {name: 'Patrick Reed', score:-9, roundScores: [-1,-2,-3,-3]},
+        {name: 'Scottie Scheffler', score:-8, roundScores: [-4,-1,0,-3]},
+        {name: 'Sungjae Im', score:-7, roundScores: [-1,-2,-1,-3]},
+        {name: 'Bryson DeChambeau', score:-7, roundScores: [-3,-4,-3,3]}
+      ];
+      const poolLeaderboardData = [
+        {name: 'K-Dawg', points: -35, selectedPlayers: [
+          {name: 'Justin Rose', score:-11},{name: 'Patrick Reed', score:-9},{name: 'Scottie Scheffler', score:-8},{name: 'Sungjae Im', score:-7},{name: 'Bryson DeChambeau', score:-7},{name: 'Ludvig Åberg', score:-6}
+        ]},
+        {name: 'Test 1', points: -18, selectedPlayers:[{name: 'Nick Dunlap', score:37},{name: 'Brian Harman', score:2},{name: 'Max Homa', score:-4},{name: 'Scottie Scheffler', score:-8},{name: 'Harris English', score:-4},{name: 'Byeong Hun An', score:-2}]},
+        {name: 'Test 2', points: 5, selectedPlayers:[{name: 'Thriston Lawrence', score:31},{name: 'Davis Thompson', score:5},{name: 'Collin Morikawa', score:-3},{name: 'Rasmus Højgaard', score:1},{name: 'Bernhard Langer', score:23},{name: 'Charl Schwartzel', score:2}]},
+        {name: 'Test 3', points: 4, selectedPlayers:[{name: 'Akshay Bhatia', score:4},{name: 'Nick Taylor', score:3},{name: 'Wyndham Clark', score:5},{name: 'Cameron Smith', score:25},{name: 'Byeong Hun An', score:-2},{name: 'Michael Kim', score:-1}]},
+        {name: 'Test 4', points: -3, selectedPlayers:[{name: 'Viktor Hovland', score:-2},{name: 'Rasmus Højgaard', score:1},{name: 'Bubba Watson', score:-3},{name: 'Keegan Bradley', score:23},{name: 'Joe Highsmith', score:24},{name: 'Max Greyserman', score:1}]},
+        {name: 'Test 5', points: -8, selectedPlayers:[{name: 'Noah Kent (a)', score:31},{name: 'Sahith Theegala', score:0},{name: 'Rasmus Højgaard', score:1},{name: 'Bryson DeChambeau', score:-7},{name: 'Daniel Berger', score:-2},{name: 'Nicolai Højgaard', score:26}]},
+        {name: 'Test 6', points: 21, selectedPlayers:[{name: 'Taylor Pendrith', score:28},{name: 'Hideki Matsuyama', score:-2},{name: 'Michael Kim', score:-1},{name: 'Joaquín Niemann', score:0},{name: 'Tony Finau', score:24},{name: 'Brooks Koepka', score:25}]},
+        {name: 'Test 7', points: 28, selectedPlayers:[{name: 'Patrick Cantlay', score:2},{name: 'Thomas Detry', score:29},{name: 'Tom Hoge', score:-3},{name: 'Brian Harman', score:2},{name: 'Christiaan Bezuidenhout', score:27},{name: 'Lucas Glover', score:28}]}
+      ];
+      golfLeaderboardData.sort((a, b) => a.score - b.score);
+      poolLeaderboardData.sort((a, b) => a.points - b.points);
 
-    <footer>
-        <p>Website created by K-Dawg. All Rights Reserved. 2025</p>
-        <button class="feedback-button" onclick="sendFeedback()">Submit Feedback</button>
-    </footer>
-
-    <script>
-        function updateCountdown() {
-            const futureDate = new Date("09 April 2026").getTime();
-            const now = new Date().getTime();
-            const timeLeft = futureDate - now;
-
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("time-left").textContent =
-                `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
-        }
-
-        setInterval(updateCountdown, 1000);
-
-        function sendFeedback() {
-            const feedback = prompt("Please enter your feedback:");
-            if (feedback) {
-                window.location.href = `mailto:kev11wolf@gmail.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = [
-                'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg', //par 3
-                'https://media.stewarttravel.co.uk/media/repository/Golf/golfcourses/USA/Georgia/AugustaNational/Augusta-National.jpg', //par 5
-                'https://static01.nyt.com/images/2025/05/12/multimedia/12nat-masters-photos-rory-win-sunday-chtq/12nat-masters-photos-rory-win-sunday-chtq-articleLarge.jpg', // Rory squatting masters win
-                'https://images2.minutemediacdn.com/image/upload/c_crop,w_8025,h_4514,x_0,y_167/c_fill,w_720,ar_16:9,f_auto,q_auto,g_auto/images/ImagnImages/mmsport/si/01jabn4qvj71gpkb0kzy.jpg', //Scottie holding trophy
-                'https://golfweek.usatoday.com/gcdn/authoring/authoring-images/2025/04/10/SGLF/83022855007-usatsi-25892403.jpg', //Honorary starters
-                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1685967.jpg', //Jack Nicklaus Yes Sir Putter Lift
-                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-83123181.jpg', //Phil jumping masters win
-                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1074391880-1.jpg', //1997 tigers win fist pump
-                'https://worldwide.golf/wp-content/uploads/2020/04/GettyImages-1145859172.jpg' //2019 tiger masters win
-                // Add more image URLs as needed
-            ];
-            let currentImageIndex = 0;
-            const slideshowImage = document.getElementById('slideshow-image');
-            
-            // Set initial image source
-            slideshowImage.src = images[currentImageIndex];
-            
-            // linear first to last slideshow order
-            function cycleSlideshow() {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                slideshowImage.src = images[currentImageIndex];
-            }
-            
-            setInterval(cycleSlideshow, 3000);
-
-            const golfLeaderboardData = [
-                {name: 'Rory McIlroy', score:-11, roundScores: [0,-6,-6,1]},
-                {name: 'Justin Rose', score:-11, roundScores: [-7,-1,3,-6]},
-                {name: 'Patrick Reed', score:-9, roundScores: [-1,-2,-3,-3]},
-                {name: 'Scottie Scheffler', score:-8, roundScores: [-4,-1,0,-3]},
-                {name: 'Sungjae Im', score:-7, roundScores: [-1,-2,-1,-3]},
-                {name: 'Bryson DeChambeau', score:-7, roundScores: [-3,-4,-3,3]}
-                // Add additional players as needed
-            ];
-
-            const poolLeaderboardData = [
-                { name: 'K-Dawg', points: -35, selectedPlayers:[{name: 'Justin Rose', score:-11},{name: 'Patrick Reed', score:-9},{name: 'Scottie Scheffler', score:-8},{name: 'Sungjae Im', score:-7},{name: 'Bryson DeChambeau', score:-7},{name: 'Ludvig Åberg', score:-6}]},
-                { name: 'Test 1', points: -18, selectedPlayers:[{name: 'Nick Dunlap', score:37},{name: 'Brian Harman', score:2},{name: 'Max Homa', score:-4},{name: 'Scottie Scheffler', score:-8},{name: 'Harris English', score:-4},{name: 'Byeong Hun An', score:-2}]},
-                { name: 'Test 2', points: 5, selectedPlayers:[{name: 'Thriston Lawrence', score:31},{name: 'Davis Thompson', score:5},{name: 'Collin Morikawa', score:-3},{name: 'Rasmus Højgaard', score:1},{name: 'Bernhard Langer', score:23},{name: 'Charl Schwartzel', score:2}]},
-                { name: 'Test 3', points: 4, selectedPlayers:[{name: 'Akshay Bhatia', score:4},{name: 'Nick Taylor', score:3},{name: 'Wyndham Clark', score:5},{name: 'Cameron Smith', score:25},{name: 'Byeong Hun An', score:-2},{name: 'Michael Kim', score:-1}]},
-                { name: 'Test 4', points: -3, selectedPlayers:[{name: 'Viktor Hovland', score:-2},{name: 'Rasmus Højgaard', score:1},{name: 'Bubba Watson', score:-3},{name: 'Keegan Bradley', score:23},{name: 'Joe Highsmith', score:24},{name: 'Max Greyserman', score:1}]},
-                { name: 'Test 5', points: -8, selectedPlayers:[{name: 'Noah Kent (a)', score:31},{name: 'Sahith Theegala', score:0},{name: 'Rasmus Højgaard', score:1},{name: 'Bryson DeChambeau', score:-7},{name: 'Daniel Berger', score:-2},{name: 'Nicolai Højgaard', score:26}]},
-                { name: 'Test 6', points: 21, selectedPlayers:[{name: 'Taylor Pendrith', score:28},{name: 'Hideki Matsuyama', score:-2},{name: 'Michael Kim', score:-1},{name: 'Joaquín Niemann', score:0},{name: 'Tony Finau', score:24},{name: 'Brooks Koepka', score:25}]},
-                { name: 'Test 7', points: 28, selectedPlayers:[{name: 'Patrick Cantlay', score:2},{name: 'Thomas Detry', score:29},{name: 'Tom Hoge', score:-3},{name: 'Brian Harman', score:2},{name: 'Christiaan Bezuidenhout', score:27},{name: 'Lucas Glover', score:28}]},
-                // Add additional test entries as needed
-            ];
-
-            golfLeaderboardData.sort((a, b) => a.score - b.score);
-            poolLeaderboardData.sort((a, b) => a.points - b.points);
-
-            function updateLeaderboard(listId, data, scoreType) {
-                const list = document.getElementById(listId);
-                list.innerHTML = '';
-
-                const topPlayers = data.slice(0, 10); // Show top 10 players initially
-                const otherPlayers = data.slice(10); // Rest of the players
-
-                topPlayers.forEach(item => {
-                    createListItem(list, item, scoreType);
-                });
-
-                const toggleButton = document.getElementById('toggle-button');
-                let showMore = false;
-
-                toggleButton.addEventListener('click', function() {
-                    showMore = !showMore;
-                    if (showMore) {
-                        otherPlayers.forEach(item => {
-                            createListItem(list, item, scoreType);
-                        });
-                        toggleButton.textContent = 'Show Less';
-                    } else {
-                        list.innerHTML = '';
-                        topPlayers.forEach(item => {
-                            createListItem(list, item, scoreType);
-                        });
-                        toggleButton.textContent = 'Show More';
-                    }
-                });
-            }
-
-            function createListItem(list, item, scoreType) {
-                const li = document.createElement('li');
-                const expandDiv = document.createElement('div');
-                expandDiv.classList.add('expand');
-
-                li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`;
-
-                if (item.roundScores) {
-                    const roundScores = item.roundScores.map((score, index) => `<div>Round ${index + 1}: ${score}</div>`).join('');
-                    expandDiv.innerHTML = `<strong>Round Scores:</strong>${roundScores}`;
-                }
-
-                if (item.selectedPlayers) {
-                    item.selectedPlayers.forEach(player => {
-                        const playerInfo = document.createElement('div');
-                        playerInfo.textContent = `${player.name}: ${player.score}`;
-                        expandDiv.appendChild(playerInfo);
-                    });
-                }
-
-                li.appendChild(expandDiv);
-                list.appendChild(li);
-
-                li.addEventListener('click', function() {
-                    const expanded = expandDiv.style.display === 'block';
-                    document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
-                    expandDiv.style.display = expanded ? 'none' : 'block';
-                });
-            }
-
-            updateLeaderboard('golf-list', golfLeaderboardData, 'score');
-            updateLeaderboard('pool-list', poolLeaderboardData, 'points');
+      // Collapsible leaderboard button update
+      function updateLeaderboard(listId, data, scoreType) {
+        const list = document.getElementById(listId);
+        list.innerHTML = '';
+        const topPlayers = data.slice(0, 10);
+        const otherPlayers = data.slice(10);
+        topPlayers.forEach(item => { createListItem(list, item, scoreType); });
+        const toggleButton = document.getElementById('toggle-button');
+        let showMore = false;
+        toggleButton.addEventListener('click', function() {
+          showMore = !showMore;
+          if (showMore) {
+            otherPlayers.forEach(item => { createListItem(list, item, scoreType); });
+            toggleButton.textContent = 'Show Less';
+          } else {
+            list.innerHTML = '';
+            topPlayers.forEach(item => { createListItem(list, item, scoreType); });
+            toggleButton.textContent = 'Show More';
+          }
         });
-    </script>
+      }
+      function createListItem(list, item, scoreType) {
+        const li = document.createElement('li');
+        const expandDiv = document.createElement('div');
+        expandDiv.classList.add('expand');
+        li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`;
+        if (item.roundScores) {
+          const roundScores = item.roundScores.map((score, index) => `<div>Round ${index + 1}: ${score}</div>`).join('');
+          expandDiv.innerHTML = `<strong>Round Scores:</strong>${roundScores}`;
+        }
+        if (item.selectedPlayers) {
+          item.selectedPlayers.forEach(player => {
+            const playerInfo = document.createElement('div');
+            playerInfo.textContent = `${player.name}: ${player.score}`;
+            expandDiv.appendChild(playerInfo);
+          });
+        }
+        li.appendChild(expandDiv);
+        list.appendChild(li);
+        li.addEventListener('click', function() {
+          const expanded = expandDiv.style.display === 'block';
+          document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
+          expandDiv.style.display = expanded ? 'none' : 'block';
+        });
+      }
+      updateLeaderboard('golf-list', golfLeaderboardData, 'score');
+      updateLeaderboard('pool-list', poolLeaderboardData, 'points');
+    });
+  </script>
 </body>
 </html>
