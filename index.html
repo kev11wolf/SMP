@@ -63,79 +63,85 @@
       margin: 0 auto;
     }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 20px; /* Reduced margin */
     }
     h2 {
       color: #003300;
       text-align: center;
+      font-size: 1.2em; /* Reduced font size */
+      margin: 10px 0; /* Adjusted margin */
     }
     ul {
       list-style-type: none;
       padding: 0;
+      margin: 0; /* Removed padding */
     }
     li {
       background-color: #fff;
-      margin: 5px 0;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 3px 0; /* Reduced margin */
+      padding: 8px; /* Reduced padding */
+      border-radius: 3px; /* Reduced border radius */
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Reduced shadow */
       cursor: pointer;
       position: relative;
       transition: background-color 0.3s ease;
+      font-size: 0.9em; /* Reduced font size */
     }
     li:hover {
       background-color: #e5ffe5;
     }
     .expand {
       display: none;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 5px; /* Reduced margin */
+      padding: 5px; /* Reduced padding */
       background-color: #e5ffe5;
-      border-radius: 5px;
+      border-radius: 3px; /* Reduced border radius */
+      font-size: 0.85em; /* Reduced font size */
     }
     .golf-icon {
-      width: 20px;
-      height: 20px;
+      width: 16px; /* Reduced icon size */
+      height: 16px; /* Reduced icon size */
       background-image: url('https://i.etsystatic.com/16454555/r/il/f205d2/4762277869/il_570xN.4762277869_89g1.jpg');
       background-size: contain;
       display: inline-block;
       vertical-align: middle;
-      margin-right: 10px;
+      margin-right: 5px; /* Reduced margin */
     }
     footer {
       background-color: #003525;
       color: #fff;
-      padding: 20px;
+      padding: 10px; /* Reduced padding */
       text-align: center;
     }
     .feedback-button {
       background-color: #fff;
       color: #004c00;
       border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
+      padding: 8px 16px; /* Reduced padding */
+      border-radius: 3px; /* Reduced border radius */
       cursor: pointer;
       margin-top: 10px;
     }
     .slideshow img {
       max-width: 100%;
       width: auto;
-      height: 200px;
-      border-radius: 5px;
+      height: 150px; /* Reduced height */
+      border-radius: 3px; /* Reduced border radius */
       display: block;
       margin: 0 auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px auto;
+      margin: 10px auto; /* Reduced margin */
     }
     th, td {
-      padding: 10px;
+      padding: 8px; /* Reduced padding */
       background-color: #fff;
       border: 1px solid #ddd;
       text-align: center;
-      border-radius: 5px;
+      border-radius: 3px; /* Reduced border radius */
+      font-size: 0.9em; /* Reduced font size */
     }
     th {
       background-color: #003300;
@@ -145,17 +151,17 @@
       background-color: #e5ffe5;
     }
     .collapse-btn {
-      margin: 10px 0 20px 0;
+      margin: 5px 0; /* Reduced margin */
       display: block;
       margin-left: auto;
       margin-right: auto;
       background: #e5ffe5;
       color: #003300;
       border: 1px solid #003300;
-      padding: 7px 15px;
-      border-radius: 4px;
+      padding: 5px 10px; /* Reduced padding */
+      border-radius: 3px; /* Reduced border radius */
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.9em; /* Reduced font size */
     }
   </style>
 </head>
@@ -234,29 +240,35 @@
       <iframe width="300" height="150" src="https://www.youtube.com/embed/G97AdMLbfr4?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </section>
   </main>
+    <div id="chatango-container" style="position: fixed; bottom: 20px; right: 20px;">
+    <script id="cid0020000416183938966" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">
+      {"handle":"sommerville-masters","arch":"js","styles":{"b":100,"c":"000000","d":"000000","l":"FFFFFF","m":"FFFFFF","p":"10","r":100,"fwtickm":1}}
+    </script>
+  </div>
   <footer>
     <p>Website created by K-Dawg. All Rights Reserved. 2025</p>
     <button class="feedback-button" onclick="sendFeedback()">Submit Feedback</button>
   </footer>
   <script>
     function updateCountdown() {
-      const futureDate = new Date("09 April 2026").getTime();
-      const now = new Date().getTime();
-      const timeLeft = futureDate - now;
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-      document.getElementById("time-left").textContent =
-        `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`;
+      const futureDate = new Date("09 April 2026").getTime(); // Set the future date
+      const now = new Date().getTime(); // Get the current date
+      const timeLeft = futureDate - now; // Calculate time left
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); // Calculate days
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Calculate hours
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Calculate minutes
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000); // Calculate seconds
+      document.getElementById("time-left").textContent = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds`; // Update the timer display
     }
-    setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000); // Update the timer every second
+
     function sendFeedback() {
-      const feedback = prompt("Please enter your feedback:");
+      const feedback = prompt("Please enter your feedback:"); // Prompt for feedback
       if (feedback) {
-        window.location.href = `mailto:kev11wolf@gmail.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`;
+        window.location.href = `mailto:kev11wolf@gmail.com?subject=Website Feedback&body=${encodeURIComponent(feedback)}`; // Send feedback via email
       }
     }
+
     document.addEventListener('DOMContentLoaded', function() {
       const images = [
         'https://i.insider.com/5ac3ca737a74af24008b45c7?width=1000&format=jpeg',
@@ -271,15 +283,16 @@
       ];
       let currentImageIndex = 0;
       const slideshowImage = document.getElementById('slideshow-image');
-      slideshowImage.src = images[currentImageIndex];
+      slideshowImage.src = images[currentImageIndex]; // Set the initial image
+
       function cycleSlideshow() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        slideshowImage.src = images[currentImageIndex];
+        currentImageIndex = (currentImageIndex + 1) % images.length; // Cycle to the next image
+        slideshowImage.src = images[currentImageIndex]; // Update the slideshow image
       }
-      setInterval(cycleSlideshow, 3000);
+      setInterval(cycleSlideshow, 3000); // Cycle images every 3 seconds
 
       const golfLeaderboardData = [
-          {name: 'Rory McIlroy', score:-11, roundScores:[0,-6,-6,1]},
+       {name: 'Rory McIlroy', score:-11, roundScores:[0,-6,-6,1]},
 {name: 'Justin Rose', score:-11, roundScores:[-7,-1,3,-6]},
 {name: 'Patrick Reed', score:-9, roundScores:[-1,-2,-3,-3]},
 {name: 'Scottie Scheffler', score:-8, roundScores:[-4,-1,0,-3]},
@@ -376,9 +389,9 @@
 {name: 'Nick Dunlap', score:37, roundScores:[18,-1,10,10]},
 
       ];
-      
-      
-      const poolLeaderboardData = [{ name: 'K-Dawg', points: -13, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Bryson DeChambeau', score:-7},{name: 'Sahith Theegala', score:0},{name: 'Patrick Cantlay', score:2},{name: 'Phil Mickelson', score:25},{name: 'Cameron Young', score:27}]},
+
+      const poolLeaderboardData = [
+{ name: 'K-Dawg', points: -13, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Bryson DeChambeau', score:-7},{name: 'Sahith Theegala', score:0},{name: 'Patrick Cantlay', score:2},{name: 'Phil Mickelson', score:25},{name: 'Cameron Young', score:27}]},
 { name: 'Jason K.', points: -26, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Rory McIlroy', score:-11},{name: 'Corey Conners', score:-5},{name: 'Min Woo Lee', score:6},{name: 'Daniel Berger', score:-2},{name: 'Cam Davis', score:29}]},
 { name: 'Paul W.', points: -24, selectedPlayers:[{name: 'Jon Rahm', score:-3},{name: 'Rory McIlroy', score:-11},{name: 'Shane Lowry', score:4},{name: 'Patrick Reed', score:-9},{name: 'Aaron Rai', score:-1},{name: 'Nick Taylor', score:3}]},
 { name: 'Rick S.', points: -20, selectedPlayers:[{name: 'Collin Morikawa', score:-3},{name: 'Viktor Hovland', score:-2},{name: 'Patrick Cantlay', score:2},{name: 'Shane Lowry', score:4},{name: 'Justin Rose', score:-11},{name: 'Max Homa', score:-4}]},
@@ -398,90 +411,94 @@
 { name: 'Cole T.', points: -4, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Rory McIlroy', score:-11},{name: 'Patrick Reed', score:-9},{name: 'Will Zalatoris', score:28},{name: 'Billy Horschel', score:25},{name: 'Joe Highsmith', score:24}]},
 { name: 'Jordan', points: 16, selectedPlayers:[{name: 'Collin Morikawa', score:-3},{name: 'Rory McIlroy', score:-11},{name: 'Sepp Straka', score:25},{name: 'Russell Henley', score:23},{name: 'J.J. Spaun', score:7},{name: 'Cameron Young', score:27}]},
 { name: 'Brandon E.', points: 34, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Ludvig Åberg', score:-6},{name: 'Russell Henley', score:23},{name: 'Sepp Straka', score:25},{name: 'Billy Horschel', score:25},{name: 'Christiaan Bezuidenhout', score:27}]},
-];
 
-      golfLeaderboardData.sort((a, b) => a.score - b.score);
-      poolLeaderboardData.sort((a, b) => a.points - b.points);
+      ];
+
+      golfLeaderboardData.sort((a, b) => a.score - b.score); // Sort golf scores
+      poolLeaderboardData.sort((a, b) => a.points - b.points); // Sort pool points
 
       function updateLeaderboard(listId, data, scoreType, limit, btnId) {
-        const list = document.getElementById(listId);
-        list.innerHTML = '';
-        let showAll = !limit;
-        let btn = btnId ? document.getElementById(btnId) : null;
+        const list = document.getElementById(listId); // Get the list element
+        list.innerHTML = ''; // Clear the list
+        let showAll = !limit; // Determine if showing all entries
+        let btn = btnId ? document.getElementById(btnId) : null; // Get the collapse button
 
-        // If no limit, show all participants always.
         if (showAll) {
-          data.forEach(item => createListItem(list, item, scoreType));
-          if (btn) btn.style.display = 'none';
+          data.forEach(item => createListItem(list, item, scoreType)); // Show all entries
+          if (btn) btn.style.display = 'none'; // Hide the collapse button
           return;
         }
 
-        // Show with expand/collapse
-        const topPlayers = data.slice(0, 10);
-        const otherPlayers = data.slice(10);
-
-        topPlayers.forEach(item => createListItem(list, item, scoreType));
-        if (btn) btn.textContent = "Show More";
+        const topPlayers = data.slice(0, 10); // Get top 10 players
+        topPlayers.forEach(item => createListItem(list, item, scoreType)); // Display top 10
+        if (btn) btn.textContent = "Show More"; // Update button text
         if (!btn) return;
 
-        btn.style.display = "block";
-        let expanded = false;
+        btn.style.display = "block"; // Show the collapse button
+        let expanded = false; 
+
         btn.onclick = function() {
-          expanded = !expanded;
-          list.innerHTML = '';
+          expanded = !expanded; // Toggle expand state
+          list.innerHTML = ''; // Clear the list
           if (expanded) {
-            data.forEach(item => createListItem(list, item, scoreType));
-            btn.textContent = "Show Less";
+            data.forEach(item => createListItem(list, item, scoreType)); // Show all entries
+            btn.textContent = "Show Less"; // Update button text
           } else {
-            topPlayers.forEach(item => createListItem(list, item, scoreType));
-            btn.textContent = "Show More";
+            topPlayers.forEach(item => createListItem(list, item, scoreType)); // Show top 10
+            btn.textContent = "Show More"; // Update button text
           }
         };
       }
 
       function createListItem(list, item, scoreType) {
-        const li = document.createElement('li');
-        const expandDiv = document.createElement('div');
-        expandDiv.classList.add('expand');
-        li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`;
+        const li = document.createElement('li'); // Create a list item
+        const expandDiv = document.createElement('div'); // Create an expandable div
+        expandDiv.classList.add('expand'); // Add expand class
+        li.innerHTML = `<span class="golf-icon"></span> ${item.name}: ${item[scoreType]}`; // Set list item content
+
         if (item.roundScores) {
           const roundScores = item.roundScores.map((score, index) => `<div>Round ${index + 1}: ${score}</div>`).join('');
-          expandDiv.innerHTML = `<strong>Round Scores:</strong>${roundScores}`;
+          expandDiv.innerHTML = `<strong>Round Scores:</strong>${roundScores}`; // Add round scores
         }
+
         if (item.selectedPlayers) {
           item.selectedPlayers.forEach(player => {
             const playerInfo = document.createElement('div');
-            playerInfo.textContent = `${player.name}: ${player.score}`;
+            playerInfo.textContent = `${player.name}: ${player.score}`; // Add selected player info
             expandDiv.appendChild(playerInfo);
           });
         }
-        li.appendChild(expandDiv);
-        list.appendChild(li);
+
+        li.appendChild(expandDiv); // Add expand div to list item
+        list.appendChild(li); // Add list item to list
+
         li.addEventListener('click', function() {
-          const expanded = expandDiv.style.display === 'block';
-          document.querySelectorAll('.expand').forEach(div => div.style.display = 'none');
-          expandDiv.style.display = expanded ? 'none' : 'block';
+          const expanded = expandDiv.style.display === 'block'; // Check if expanded
+          document.querySelectorAll('.expand').forEach(div => div.style.display = 'none'); // Collapse all others
+          expandDiv.style.display = expanded ? 'none' : 'block'; // Toggle expand state
         });
       }
 
       // Golf leaderboard: expand/collapse (top 10/Show More)
       updateLeaderboard('golf-list', golfLeaderboardData, 'score', 10, 'toggle-button');
+
       // Pool leaderboard: always show all, with expand/collapse button
       updateLeaderboard('pool-list', poolLeaderboardData, 'points', null, 'toggle-pool-button');
+
       // Setup custom Pool leaderboard expand/collapse
       const poolBtn = document.getElementById('toggle-pool-button');
       let poolExpanded = true;
+
       poolBtn.onclick = function() {
-        poolExpanded = !poolExpanded;
+        poolExpanded = !poolExpanded; // Toggle expand state
         const poolList = document.getElementById('pool-list');
         if (poolExpanded) {
-          // Show all
-          poolList.innerHTML = '';
-          poolLeaderboardData.forEach(item => createListItem(poolList, item, 'points'));
-          poolBtn.textContent = "Collapse";
+          poolList.innerHTML = ''; // Clear the list
+          poolLeaderboardData.forEach(item => createListItem(poolList, item, 'points')); // Show all entries
+          poolBtn.textContent = "Collapse"; // Update button text
         } else {
-          poolList.innerHTML = '';
-          poolBtn.textContent = "Expand";
+          poolList.innerHTML = ''; // Clear the list
+          poolBtn.textContent = "Expand"; // Update button text
         }
       };
     });
