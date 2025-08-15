@@ -31,8 +31,8 @@
       left: 20px;
       top: 50%;
       transform: translateY(-50%);
-      max-height: 50px;
-      height: 50px;
+      max-height: 75px;
+      height: 75px;
       width: auto;
       object-fit: contain;
       z-index: 2;
@@ -66,7 +66,7 @@
       margin-bottom: 20px; /* Reduced margin */
     }
     h2 {
-      color: #003300;
+      color: #003525;
       text-align: center;
       font-size: 1.2em; /* Reduced font size */
       margin: 10px 0; /* Adjusted margin */
@@ -99,8 +99,8 @@
       font-size: 0.85em; /* Reduced font size */
     }
     .golf-icon {
-      width: 16px; /* Reduced icon size */
-      height: 16px; /* Reduced icon size */
+      width: 15px; /* Reduced icon size */
+      height: 15px; /* Reduced icon size */
       background-image: url('https://i.etsystatic.com/16454555/r/il/f205d2/4762277869/il_570xN.4762277869_89g1.jpg');
       background-size: contain;
       display: inline-block;
@@ -125,7 +125,7 @@
     .slideshow img {
       max-width: 100%;
       width: auto;
-      height: 150px; /* Reduced height */
+      height: 250px; /* Reduced height */
       border-radius: 3px; /* Reduced border radius */
       display: block;
       margin: 0 auto;
@@ -144,11 +144,11 @@
       font-size: 0.9em; /* Reduced font size */
     }
     th {
-      background-color: #003300;
+      background-color: #003525;
       color: #fff;
     }
     tr:nth-child(even) {
-      background-color: #e5ffe5;
+      background-color: #003525;
     }
     .collapse-btn {
       margin: 5px 0; /* Reduced margin */
@@ -165,24 +165,31 @@
     }
   </style>
 </head>
+
+
 <body>
   <header>
     <!-- Insert your logo URL and logo link below -->
     <a href="https://kev11wolf.github.io/Sommerville-Masters-Pool/">
       <img src="https://esagcs.org/wp-content/uploads/2023/03/The-Masters.jpg" alt="Logo" class="logo">
     </a>
-    <h1>Sommeverille Masters Pool</h1>
+    <h1>Sommerville Masters Pool</h1>
   </header>
-  <section class="timer" id="countdown-timer">
+  
+  
+
+  
+  <main>
+        <section class="timer" id="countdown-timer">
     <h2>Time left 'til 2026 Masters</h2>
     <p id="time-left"></p>
   </section>
-  <main>
-    <section class="updates">
+          <section class="updates">
       <h2>News + Updates</h2>
       <p>Thanks for playing! See you all in 2026.</p>
-      <img src="https://res.cloudinary.com/www-flook-co-za/image/upload/c_fit,f_auto,w_800,q_auto:eco/v1741872908/ffcugz2w4kcq7bj9jbfu.jpg" alt="Update Placeholder" class="update-image">
+      <img src="https://i.postimg.cc/wjy1wZ2X/2025-masters.png" alt="Update Placeholder" class="update-image">
     </section>
+
 
 <section style="background-color: #fff; padding: 10px; text-align: center; max-width: 800px; margin: 20px auto; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
   <h2 style="color: #003300; font-size: 1.2em; margin: 10px 0; font-family: Helvetica, Arial, sans-serif;">Sommerville Masters Pool Registration</h2>
@@ -194,10 +201,21 @@
   </a>
 </section>
     
+    
     <section class="slideshow">
       <!-- <h2>Slideshow</h2> -->
       <img id="slideshow-image" src="" alt="Slideshow Image">
     </section>
+    
+        <section id="pool-leaderboard">
+      <h2>Pool Participants Leaderboard</h2>
+      <button id="toggle-pool-button" class="collapse-btn">Collapse</button>
+      <ul id="pool-list">
+        <!-- Pool participant scores will be inserted here -->
+      </ul>
+    </section>
+    
+    
     <section id="golf-leaderboard">
       <h2>Golf Players Leaderboard</h2>
       <button id="toggle-button" class="collapse-btn">Show More</button>
@@ -205,13 +223,9 @@
         <!-- Golf player scores will be inserted here -->
       </ul>
     </section>
-    <section id="pool-leaderboard">
-      <h2>Pool Participants Leaderboard</h2>
-      <button id="toggle-pool-button" class="collapse-btn">Collapse</button>
-      <ul id="pool-list">
-        <!-- Pool participant scores will be inserted here -->
-      </ul>
-    </section>
+
+
+
     <section id="historical-winners">
       <h2>Sommerville Masters Pool Past Champions</h2>
       <table>
@@ -259,8 +273,8 @@
   </div>
   
   <footer>
-    <p>Website created by K-Dawg. All Rights Reserved. 2025</p>
-    <button class="feedback-button" onclick="sendFeedback()">Submit Feedback</button>
+    <p>Website created by K-Dawg.
+    <button class="feedback-button" onclick="sendFeedback()">Submit Website Feedback</button></p>
   </footer>
   <script>
     function updateCountdown() {
