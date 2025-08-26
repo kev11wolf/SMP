@@ -24,19 +24,18 @@
     header h1 {
       position: center;
       z-index: 1;
-      font-size: 1.6em; /* Reduced font size */
+         font-size: 1.6em; /* Reduced font size */
       margin-left: 0px;
     }
     .logo {
       position: absolute;
       left: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      max-height: 50px;
-      height: 50px;
-      width: auto;
-      object-fit: contain;
-      z-index: 2;
+  max-width: 20%; /* Adjust this percentage for desired scaling */
+  width: auto;
+  height: auto;
+  max-height: 50px; /* Limits the height of the logo */
+  object-fit: contain;
+}
     }
     .timer, .updates, #golf-leaderboard, #pool-leaderboard, .youtube, .slideshow {
       background-color: #fff;
@@ -425,6 +424,7 @@
       ];
 
       const poolLeaderboardData = [
+          
 { name: 'K-Dawg', points: -13, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Bryson DeChambeau', score:-7},{name: 'Sahith Theegala', score:0},{name: 'Patrick Cantlay', score:2},{name: 'Phil Mickelson', score:25},{name: 'Cameron Young', score:27}]},
 { name: 'Jason K.', points: -26, selectedPlayers:[{name: 'Scottie Scheffler', score:-8},{name: 'Rory McIlroy', score:-11},{name: 'Corey Conners', score:-5},{name: 'Min Woo Lee', score:6},{name: 'Daniel Berger', score:-2},{name: 'Cam Davis', score:29}]},
 { name: 'Paul W.', points: -24, selectedPlayers:[{name: 'Jon Rahm', score:-3},{name: 'Rory McIlroy', score:-11},{name: 'Shane Lowry', score:4},{name: 'Patrick Reed', score:-9},{name: 'Aaron Rai', score:-1},{name: 'Nick Taylor', score:3}]},
