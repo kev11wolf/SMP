@@ -284,7 +284,54 @@
   
   <footer>
     <p>Website created by K-Dawg.
-    <button class="feedback-button" onclick="sendFeedback()">Submit Website Feedback</button></p>
+    <button class="feedback-button" onclick="sendFeedback()">Submit Website Feedback</button>
+    <svg viewBox="0 0 64 64" width="28" height="28" role="img" aria-label="Masters wordmark with flag" xmlns="http://www.w3.org/2000/svg">
+  <title>Masters wordmark</title>
+  <defs>
+    <!-- Subtle paper-like gradient for the square badge (Masters yellow) -->
+    <linearGradient id="badgeFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAD84E"/>
+      <stop offset="100%" stop-color="#F6C915"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="rgba(0,0,0,.25)"/>
+    </filter>
+    <style>
+      /* Use a Baskerville-like italic; will look best if you load Libre Baskerville (see notes) */
+      .word {
+        font-family: "Libre Baskerville", Baskerville, "Times New Roman", serif;
+        font-style: italic;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+
+  <!-- Square badge background -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="6" ry="6"
+        fill="url(#badgeFill)" stroke="#106d3b" stroke-width="2" filter="url(#softShadow)"/>
+
+  <!-- Wordmark (centered; scaled to leave room for the flag on the right) -->
+  <!-- textLength forces consistent width so the flag aligns nicely across fonts -->
+  <text x="30" y="39"
+        class="word"
+        fill="#106d3b"
+        font-size="18"
+        text-anchor="middle"
+        textLength="44"
+        lengthAdjust="spacingAndGlyphs">MASTERS</text>
+
+  <!-- Flagstick & flag at end of the word (right edge of the text area ~ x=52) -->
+  <g transform="translate(52,18)">
+    <!-- stick -->
+    <path d="M0 0 L0 18" stroke="#2b2b2b" stroke-width="1.6" stroke-linecap="round"/>
+    <!-- flag (triangular pennant) -->
+    <path d="M0 0 L9 3 L0 6 Z" fill="#D62828" stroke="#9c1f1f" stroke-width="0.7" stroke-linejoin="round"/>
+    <!-- tiny cup shadow hint near the base -->
+    <ellipse cx="-1.5" cy="18.5" rx="2.8" ry="1.1" fill="#0b0b0b" opacity="0.2"/>
+  </g>
+</svg>
+</p>
   </footer>
   <script>
     function updateCountdown() {
