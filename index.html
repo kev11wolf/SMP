@@ -195,7 +195,7 @@
       <img src="https://i.postimg.cc/wjy1wZ2X/2025-masters.png" alt="Update Placeholder" class="update-image">
     </section>
 
-    <!-- Updated weather widget section to pull and display current + 7-day forecast via Open-Meteo -->
+    <!-- Updated weather widget section to pull and display current + 7-day forecast via Open-Meteo, with emojis -->
     <section id="weather-widget">
       <h2>Augusta, GA Weather</h2>
       <div id="weather-current" style="margin-bottom: 15px;">
@@ -610,9 +610,9 @@
     }
   </script>
 
-  <!-- 4. Weather Widget Script (Open-Meteo) -->
+  <!-- 4. Weather Widget Script (Open-Meteo) with Emojis -->
   <script>
-  // Fetch current weather + 7-day forecast from Open-Meteo
+  // Fetch current weather + 7-day forecast from Open-Meteo, with emojis for weathercodes
   (async function(){
     const weatherCurrent = document.getElementById("weather-current");
     const weatherForecast = document.getElementById("weather-forecast");
@@ -647,8 +647,40 @@
       85: "Slight snow showers",
       86: "Heavy snow showers",
       95: "Thunderstorm",
-      96: "Thunderstorm w/ slight hail",
-      99: "Thunderstorm w/ heavy hail"
+      96: "Thunders. w/ slight hail",
+      99: "Thunders. w/ heavy hail"
+    };
+
+    // Simple emoji mapping
+    const weatherEmojiMap = {
+      0: "☀️",
+      1: "🌤️",
+      2: "⛅",
+      3: "☁️",
+      45: "🌫️",
+      48: "🌫️",
+      51: "🌧️",
+      53: "🌧️",
+      55: "🌧️",
+      56: "🌧️",
+      57: "🌧️",
+      61: "🌧️",
+      63: "🌧️",
+      65: "🌧️",
+      66: "🌧️",
+      67: "🌧️",
+      71: "❄️",
+      73: "❄️",
+      75: "❄️",
+      77: "❄️",
+      80: "🌧️",
+      81: "🌧️",
+      82: "🌧️",
+      85: "❄️",
+      86: "❄️",
+      95: "⛈️",
+      96: "⛈️",
+      99: "⛈️"
     };
 
     try {
@@ -661,9 +693,9 @@
       if (data.current_weather) {
         const cw = data.current_weather;
         const codeText = weatherCodeMap[cw.weathercode] || "Unknown";
+        const emoji = weatherEmojiMap[cw.weathercode] || "❓";
         weatherCurrent.innerHTML = `
-          <strong>Currently:</strong> ${cw.temperature}°F
-          &nbsp;|&nbsp; ${codeText}
+          <strong>Currently:</strong> ${emoji} ${cw.temperature}°F &nbsp;|&nbsp; ${codeText}
           &nbsp;|&nbsp; Wind ${cw.windspeed} mph
         `;
       } else {
@@ -678,13 +710,15 @@
           // Simple date string
           const dateObj = new Date(time[i]);
           const dayName = dateObj.toLocaleDateString(undefined, { weekday: "short" });
-          const wc = weatherCodeMap[weathercode[i]] || "Unknown";
+          const codeTx = weatherCodeMap[weathercode[i]] || "Unknown";
+          const emoji = weatherEmojiMap[weathercode[i]] || "❓";
           forecastHTML += `
             <div style="display:inline-block;border:1px solid #ccc;border-radius:6px;padding:8px;margin:4px;min-width:110px;">
               <div><strong>${dayName}</strong></div>
-              <div style="font-size:0.9em;color:#333;">High: ${temperature_2m_max[i]}°F</div>
+              <div style="font-size:1.2em;margin:4px 0;">${emoji}</div>
+              <div style="font-size:0.9em;color:#333;">${codeTx}</div>
+              <div style="font-size:0.9em;color:#333;margin-top:6px;">High: ${temperature_2m_max[i]}°F</div>
               <div style="font-size:0.9em;color:#333;">Low: ${temperature_2m_min[i]}°F</div>
-              <div style="font-size:0.9em;color:#333;">${wc}</div>
               <div style="font-size:0.9em;color:#333;">Precip: ${precipitation_probability_mean[i]}%</div>
             </div>
           `;
