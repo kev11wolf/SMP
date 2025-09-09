@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Sommerville Masters Pool Leaderboard</title>
   <style>
@@ -12,6 +12,7 @@
       padding: 0;
       background-color: #f7f5ef;
     }
+    /* Updated header to prevent logo clash on mobile/smaller screens */
     header {
       background-color: #003525;
       background-size: cover;
@@ -19,7 +20,6 @@
       color: #fff;
       padding: 20px;
       text-align: center;
-      position: relative;
     }
     header h1 {
       z-index: 1;
@@ -27,8 +27,8 @@
       margin-left: 0px;
     }
     .logo {
-      position: absolute;
-      left: 20px;
+      display: block;
+      margin: 0 auto;
       max-width: 20%;
       width: auto;
       height: auto;
@@ -161,17 +161,7 @@
       cursor: pointer;
       font-size: 0.9em;
     }
-    /* Sticky music player widget */
-    .music-player-sticky {
-      position: fixed;
-      bottom: 80px;
-      left: 20px;
-      background-color: #fff;
-      padding: 10px;
-      z-index: 9999;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+    /* Removed the sticky music player widget CSS */
   </style>
 </head>
 
@@ -281,7 +271,7 @@
 
     <section class="youtube">
       <h2>Enjoy the Sounds of Augusta</h2>
-      <!-- Give the iframe an ID so the music player widget can control it -->
+      <!-- Give the iframe an ID so the music player widget can control it if needed -->
       <iframe 
         id="augustaYTVideo"
         width="300" 
@@ -294,11 +284,7 @@
     </section>
   </main>
   
-  <!-- Sticky music player widget to control the above YouTube video -->
-  <div id="music-player" class="music-player-sticky">
-    <button onclick="playVideo()">Play</button>
-    <button onclick="pauseVideo()">Pause</button>
-  </div>
+  <!-- Removed sticky music player widget -->
 
   <div id="chatango-container" style="position: fixed; bottom: 20px; right: 20px;">
     <script id="cid0020000416183938966" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">
@@ -606,7 +592,7 @@
     });
   </script>
 
-  <!-- 3. YouTube IFrame API for the music player widget -->
+  <!-- 3. YouTube IFrame API (functions remain; sticky player removed) -->
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     var player;
