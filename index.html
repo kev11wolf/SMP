@@ -35,16 +35,25 @@
       max-height: 50px;
       object-fit: contain;
     }
-    .timer, .updates, #weather-widget, #golf-leaderboard, #pool-leaderboard, .youtube, .slideshow, #historical-winners, #sommerville-registration {
+    .timer,
+    .updates,
+    #weather-widget,
+    #golf-leaderboard,
+    #pool-leaderboard,
+    .youtube,
+    .slideshow,
+    #historical-winners,
+    #sommerville-registration {
       background-color: #fff;
       padding: 10px;
       text-align: center;
       max-width: 800px;
       margin: 20px auto;
       border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .update-image, .summary-image {
+    .update-image,
+    .summary-image {
       display: block;
       margin: 16px auto 0 auto;
       max-height: 200px;
@@ -79,7 +88,7 @@
       margin: 3px 0;
       padding: 8px;
       border-radius: 3px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
       cursor: pointer;
       position: relative;
       transition: background-color 0.3s ease;
@@ -133,7 +142,8 @@
       border-collapse: collapse;
       margin: 10px auto;
     }
-    th, td {
+    th,
+    td {
       padding: 8px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -161,7 +171,6 @@
       cursor: pointer;
       font-size: 0.9em;
     }
-    /* Removed the sticky music player widget CSS */
   </style>
 </head>
 
@@ -186,20 +195,15 @@
       <img src="https://i.postimg.cc/wjy1wZ2X/2025-masters.png" alt="Update Placeholder" class="update-image">
     </section>
 
+    <!-- Updated weather widget section to pull and display current + 7-day forecast via Open-Meteo -->
     <section id="weather-widget">
       <h2>Augusta, GA Weather</h2>
-      <!-- Updated Open-Meteo widget with title reflecting Augusta, GA -->
-      <iframe 
-          src="https://open-meteo.com/en/weather-widget-small?location=33.4708,-81.9748&title=Augusta,%20GA%20Weather"
-          width="100%" 
-          height="70" 
-          frameborder="0" 
-          scrolling="no" 
-          style="border: none;">
-      </iframe>
-      <p>
-        Powered by <a href="https://open-meteo.com" target="_blank">Open-Meteo</a>
-      </p>
+      <div id="weather-current" style="margin-bottom: 15px;">
+        Loading current weather…
+      </div>
+      <div id="weather-forecast">
+        Loading 7-day forecast…
+      </div>
     </section>
 
     <section id="sommerville-registration">
@@ -209,7 +213,7 @@
       <p style="color: #003300; margin-bottom: 10px; font-family: Helvetica, Arial, sans-serif;">
         Click the button below to submit your selections!
       </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFdQqMiI8_6rMCRZCMvR5AMDjgjY1Uyq_V2_GUGkQk1tJ6ag/viewform?usp=header" 
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFdQqMiI8_6rMCRZCMvR5AMDjgjY1Uyq_V2_GUGkQk1tJ6ag/viewform?usp=header"
          style="display: inline-block; text-decoration: none; background-color: #003525; color: #fff; padding: 10px 15px; border-radius: 3px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;">
         Pick your players!
       </a>
@@ -284,8 +288,6 @@
     </section>
   </main>
   
-  <!-- Removed sticky music player widget -->
-
   <div id="chatango-container" style="position: fixed; bottom: 20px; right: 20px;">
     <script id="cid0020000416183938966" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">
       {"handle":"sommerville-masters","arch":"js","styles":{"b":100,"c":"000000","d":"000000","l":"FFFFFF","m":"FFFFFF","p":"10","r":100,"fwtickm":1}}
@@ -606,6 +608,97 @@
     function pauseVideo() {
       if (player) player.pauseVideo();
     }
+  </script>
+
+  <!-- 4. Weather Widget Script (Open-Meteo) -->
+  <script>
+  // Fetch current weather + 7-day forecast from Open-Meteo
+  (async function(){
+    const weatherCurrent = document.getElementById("weather-current");
+    const weatherForecast = document.getElementById("weather-forecast");
+    const lat = 33.5025, lon = -82.02; // Augusta National location
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_mean,weathercode&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=auto`;
+
+    // Simple mapping from weather codes to short text
+    const weatherCodeMap = {
+      0: "Clear sky",
+      1: "Mainly clear",
+      2: "Partly cloudy",
+      3: "Overcast",
+      45: "Foggy",
+      48: "Depositing rime fog",
+      51: "Light drizzle",
+      53: "Moderate drizzle",
+      55: "Dense drizzle",
+      56: "Freezing drizzle",
+      57: "Freezing drizzle",
+      61: "Slight rain",
+      63: "Moderate rain",
+      65: "Heavy rain",
+      66: "Freezing rain",
+      67: "Freezing rain",
+      71: "Slight snowfall",
+      73: "Moderate snowfall",
+      75: "Heavy snowfall",
+      77: "Snow grains",
+      80: "Light rain showers",
+      81: "Moderate rain showers",
+      82: "Violent rain showers",
+      85: "Slight snow showers",
+      86: "Heavy snow showers",
+      95: "Thunderstorm",
+      96: "Thunderstorm w/ slight hail",
+      99: "Thunderstorm w/ heavy hail"
+    };
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Open-Meteo fetch failed: ${response.status}`);
+      }
+      const data = await response.json();
+      // Extract current weather
+      if (data.current_weather) {
+        const cw = data.current_weather;
+        const codeText = weatherCodeMap[cw.weathercode] || "Unknown";
+        weatherCurrent.innerHTML = `
+          <strong>Currently:</strong> ${cw.temperature}°F
+          &nbsp;|&nbsp; ${codeText}
+          &nbsp;|&nbsp; Wind ${cw.windspeed} mph
+        `;
+      } else {
+        weatherCurrent.textContent = "No current weather data.";
+      }
+
+      // Extract daily forecast (7 days)
+      if (data.daily && data.daily.time) {
+        const { time, temperature_2m_max, temperature_2m_min, precipitation_probability_mean, weathercode } = data.daily;
+        let forecastHTML = "";
+        for (let i = 0; i < time.length; i++) {
+          // Simple date string
+          const dateObj = new Date(time[i]);
+          const dayName = dateObj.toLocaleDateString(undefined, { weekday: "short" });
+          const wc = weatherCodeMap[weathercode[i]] || "Unknown";
+          forecastHTML += `
+            <div style="display:inline-block;border:1px solid #ccc;border-radius:6px;padding:8px;margin:4px;min-width:110px;">
+              <div><strong>${dayName}</strong></div>
+              <div style="font-size:0.9em;color:#333;">High: ${temperature_2m_max[i]}°F</div>
+              <div style="font-size:0.9em;color:#333;">Low: ${temperature_2m_min[i]}°F</div>
+              <div style="font-size:0.9em;color:#333;">${wc}</div>
+              <div style="font-size:0.9em;color:#333;">Precip: ${precipitation_probability_mean[i]}%</div>
+            </div>
+          `;
+        }
+        weatherForecast.innerHTML = forecastHTML;
+      } else {
+        weatherForecast.textContent = "No forecast data.";
+      }
+    } catch (err) {
+      weatherCurrent.textContent = "Could not load weather data.";
+      weatherForecast.textContent = "";
+      console.error(err);
+    }
+  })();
   </script>
 </body>
 </html>
