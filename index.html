@@ -173,7 +173,17 @@
     }
   </style>
 </head>
-
+<!-- Sticky Audio Player Controls -->
+<div id="audio-controls" style="
+  position: fixed; bottom: 20px; right: 20px; 
+  background: rgba(255,255,255,0.9); padding: 10px; 
+  border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex; align-items: center; gap: 8px; z-index: 999;">
+  
+  <button id="play-pause" style="padding: 6px 12px;">⏯️ Play</button>
+  <button id="volume-down" style="padding: 6px 12px;">🔉-</button>
+  <button id="volume-up" style="padding: 6px 12px;">🔊+</button>
+</div>
 <body>
   <header>
     <!-- Insert your logo URL and logo link below -->
@@ -333,6 +343,62 @@
 </svg>
 </p>
   </footer>
+
+<script>
+  // Initialize the audio element with your MP3 raw URL
+  const audio = new Audio("https://raw.githubusercontent.com/kev11wolf/Sommerville-Masters-Pool/main/Enjoy%20the%20Sound%Of%20_Augusta_%20_%20The%20Masters%20Theme%20Song%20On%20Repeat(1).mp3");
+  audio.loop = true; // Repeat forever
+  audio.volume = 0.5; // Default volume
+
+  const playPauseBtn = document.getElementById('play-pause');
+  const volumeUpBtn = document.getElementById('volume-up');
+  const volumeDownBtn = document.getElementById('volume-down');
+
+  let isPlaying = false;
+
+  // Toggle play/pause
+  document.getElementById('play-pause').onclick = () => {
+    if (!isPlaying) {
+      audio.play().catch(() => {
+        // Browser might block auto-play; user needs to interact
+        alert('Click the play button to start the music.');
+      });
+    } else {
+      audio.pause();
+    }
+  };
+
+  // Update button text based on play state
+  audio.onplay = () => {
+    isPlaying = true;
+    document.getElementById('play-pause').textContent = '⏸️ Pause';
+  };
+  audio.onpause = () => {
+    isPlaying = false;
+    document.getElementById('play-pause').textContent = '⏯️ Play';
+  };
+
+  // Volume controls
+  volumeUpBtn.onclick = () => {
+    if (audio.volume < 1) {
+      audio.volume = Math.min(1, audio.volume + 0.1);
+    }
+  };
+  volumeDownBtn.onclick = () => {
+    if (audio.volume > 0) {
+      audio.volume = Math.max(0, audio.volume - 0.1);
+    }
+  };
+
+  // Optional: auto-play on load (browser restrictions may block)
+  window.onload = () => {
+    // Try to auto-play, but may require user interaction
+    audio.play().catch(() => {
+      // Do nothing or alert if auto-play is blocked
+      console.log('Auto-play blocked. Use the play button.');
+    });
+  };
+</script>
 
   <!-- Scripts -->
   <!-- 1. Countdown timer and feedback script -->
