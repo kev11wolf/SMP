@@ -139,8 +139,8 @@
       margin-top: 10px;
     }
     .slideshow img {
-      max-width: 100%;
       width: auto;
+      height: auto;
       max-height: 250px;
       border-radius: 3px;
       display: block;
@@ -192,7 +192,7 @@
   
   <div>
     <!-- Updated button text to indicate "Augusta Theme Song" -->
-    <button id="play-pause" style="padding: 6px 12px;">⏯️ Play Augusta Theme Song</button>
+    <button id="play-pause" style="padding: 6px 12px;">⏯️ Play Masters Theme Song</button>
     <button id="volume-down" style="padding: 6px 12px;">🔉-</button>
     <button id="volume-up" style="padding: 6px 12px;">🔊+</button>
   </div>
@@ -372,14 +372,14 @@
   // Update button text and status line on play
   audio.onplay = () => {
     isPlaying = true;
-    playPauseBtn.textContent = '⏸️ Pause Augusta Theme Song';
-    audioStatus.textContent = 'Augusta Theme Song Playing ▶️';
+    playPauseBtn.textContent = '⏸️ Pause';
+    audioStatus.textContent = 'Masters Theme Song Playing ▶️';
   };
   // Update button text and status line on pause
   audio.onpause = () => {
     isPlaying = false;
-    playPauseBtn.textContent = '⏯️ Play Augusta Theme Song';
-    audioStatus.textContent = 'Augusta Theme Song paused ⏸️';
+    playPauseBtn.textContent = '⏯️ Play';
+    audioStatus.textContent = 'Masters Theme Song paused ⏸️';
   };
 
   // Volume controls
